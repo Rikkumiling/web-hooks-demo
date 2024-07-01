@@ -1,0 +1,16 @@
+{
+  "Tasks": [
+    {
+      "TaskId": 0,
+      "TaskName": "Test Task Number 1",
+      "Text": "Testing Text Chore, Lorem Ipsum",
+      "Status": true
+    },
+    {
+      "TaskId": 1,
+      "TaskName": "Test Task Numero Dos",
+      "Text": "Testing Text Chore Number 2, Lorem Ipsum",
+      "Status": true
+    }
+  ]
+}
