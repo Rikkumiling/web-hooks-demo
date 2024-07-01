@@ -8,9 +8,7 @@ function TaskManager() {
   useEffect(() => {}, []);
   return (
     <div className="TaskManager">
-      {TasksCont.map((task) => (
-        <Task />
-      ))}
+      <Task />
     </div>
   );
 }
