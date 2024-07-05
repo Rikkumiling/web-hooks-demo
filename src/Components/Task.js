@@ -1,26 +1,22 @@
 import { useState, useEffect } from "react";
-import { useTaskContext } from "../Context/TaskContext";
 
-export default function Task() {
-  const TasksCont = useTaskContext();
-  const [Status, setStatus] = useState(TasksCont.Status);
+export default function Task({ TaskObj }) {
+  const [Status, setStatus] = useState(TaskObj.Status);
 
   useEffect(() => {
-    console.log(TasksCont);
+    console.log(TaskObj);
   }, [Status]);
 
   return (
-    <div className="Task" key={TasksCont.TaskId}>
-      {TasksCont.map((task) => (
-        <div className="TaskContainer" key={task.TaskId}>
-          <h2>{task.TaskName}</h2>
-          <p>{task.Text}</p>
-          <p>{Status ? "Complete" : "Incomplete"}</p>
-          <button onClick={(e) => setStatus(!Status)}>
-            {Status ? "Set to Incomplete" : "Set to Complete"}
-          </button>
-        </div>
-      ))}
+    <div className="Task" key={TaskObj.TaskId}>
+      <div className="TaskContainer" key={TaskObj.TaskId}>
+        <h2>{TaskObj.TaskName}</h2>
+        <p>{TaskObj.Text}</p>
+        <p>{Status ? "Complete" : "Incomplete"}</p>
+        <button onClick={(e) => setStatus(!Status)}>
+          {Status ? "Set to Incomplete" : "Set to Complete"}
+        </button>
+      </div>
     </div>
   );
 }

@@ -1,17 +1,50 @@
-import { createContext, useState, useContext } from "react";
-import Task from "../Components/Task";
+import { createContext, useEffect, useReducer } from "react";
 
-export const TaskContext = createContext();
+const TaskContext = createContext();
 
-export function useTaskContext() {
-  const TasksCont = useContext(TaskContext);
-  const [Status, setStatus] = useState(TasksCont.Status);
-
-  function changeStatus() {
-    setStatus(!Status);
+const taskReducer = (state, action) => {
+  switch (action.type) {
+    case "ADD_TASK":
+      return [...state, action.payload];
+    case "UPDATE_TASK":
+      return state.map((task) =>
+        task.id === action.payload.id
+          ? { ...task, text: action.payload.text }
+          : task
+      );
+    case "DELETE_TASK":
+      return state.filter((task) => task.id !== action.payload);
+    case "TOGGLE_TASK":
+      return state.map((task) =>
+        task.id === action.payload
+          ? { ...task, completed: !task.completed }
+          : task
+      );
+    case "SET_TASKS":
+      return action.payload;
+    default:
+      return state;
   }
-  if (TasksCont === undefined) {
-    throw new Error("useTaskContext must be used with a TaskContext");
-  }
-  return TasksCont;
-}
+};
+
+const TaskContextProvider = ({ children }) => {
+  const [tasks, dispatch] = useReducer(taskReducer, []);
+
+  useEffect(() => {
+    const storedTasks = localStorage.getItem("tasks");
+    if (storedTasks) {
+      dispatch({ type: "SET_TASKS", payload: JSON.parse(storedTasks) });
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  return (
+    <TaskContext.Provider value={{ tasks, dispatch }}>
+      {children}
+    </TaskContext.Provider>
+  );
+};
+export { TaskContext, TaskContextProvider };
