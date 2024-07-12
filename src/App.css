@@ -7,8 +7,85 @@
 header {
   padding: 20px;
 }
+.AddTaskContainer h2 {
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 
-button {
+.AddTaskContainer2 {
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: max-content;
+  border-radius: 5px;
+  background-color: ivory;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2vh;
+}
+
+.AddTaskForm {
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.AddTaskFormDiv {
+  display: block;
+  display: flex;
+  margin-bottom: 1vh;
+}
+.AddTaskFormDiv label {
+  text-wrap: nowrap;
+}
+.AddTaskFormDiv input {
+  flex-grow: 1;
+}
+
+.AddTaskContainer form button {
+  width: 50%;
+  align-self: center;
+}
+
+#TasksContainer {
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.filterBar {
+  list-style: none;
+}
+.filterBar > li {
+  display: inline-block;
+}
+
+.taskList {
+  list-style: none;
+}
+
+.taskList li {
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 40vw;
+  border-radius: 5px;
+  background-color: ivory;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2vh;
+  padding: 2vh;
+}
+.tasks h2 {
+  margin-top: 0;
+}
+.taskText {
+  margin-bottom: 1vh;
+}
+
+#btn {
   padding: 10px;
   font-size: 16px;
   cursor: pointer;

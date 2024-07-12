@@ -1,18 +1,16 @@
-// src/App.js
-import React from 'react';
-import { ThemeProvider } from './ThemeContext';
-import Header from './Header';
-import Content from './Content';
-import './App.css';
+import React from "react";
+import "./App.css";
+import TaskManager from "./Components/TaskManager";
+import { TaskContextProvider } from "./Context/TaskContext";
 
 function App() {
   return (
-      <ThemeProvider>
-        <div className="App">
-          <Header />
-          <Content />
-        </div>
-      </ThemeProvider>
+    <div className="App">
+      <h1>To-do list</h1>
+      <TaskContextProvider>
+        <TaskManager />
+      </TaskContextProvider>
+    </div>
   );
 }
 
